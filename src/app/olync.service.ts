@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class OlyncService {
 
   private _baseUrl:String = "http://www.olync.net/olyncapi/api/";
+  //private _baseUrl:String = "http://localhost:8080/olync54_api/public/api/";
   constructor(private _http : Http) {
 
   }

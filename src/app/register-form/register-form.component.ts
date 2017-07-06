@@ -19,4 +19,7 @@ export class RegisterFormComponent implements OnInit {
   		console.log(this.states);
   }
 
+  //this is called when u click
+  
+
 }
