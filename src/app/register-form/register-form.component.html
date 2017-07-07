@@ -2,58 +2,126 @@
 	<form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm.value)">
 		<div class="form-group">
 			<label>Name: </label>
-			<input type="text" #nameRef="ngModel" required minlength="4" name="name" placeholder="Fullname"  class="form-control" ngModel>
-			<div *ngIf="nameRef.errors && (nameRef.dirty || passwordRef.touched)" class="alert alert-danger">
+			<input type="text" #nameRef="ngModel" required minlength="4" name="name" placeholder="Full Name"  class="form-control" ngModel>
+			<div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
 				<div [hidden]="!nameRef.errors.required">
 					Please enter your name.
 				</div>
 
-				<div [hidden]="!passwordRef.errors.minlength">
-					You name must be atleast four characters.
+				<div [hidden]="!nameRef.errors.minlength">
+					You name must be at least four characters.
 				</div>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label>Email: </label>
-			<input type="email" class="form-control">
+			<input type="email" #emailRef="ngModel" required minlength="2" class="form-control" name="email" placeholder="Email Address" ngModel>
+			<div *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" class="alert alert-danger">
+				<div [hidden]="!emailRef.errors.required">
+					Please enter your email address.
+				</div>
+
+				<div [hidden]="!emailRef.errors.minlength">
+					You name must be atleast four characters.
+				</div>
+			</div> 
+		</div>
+
+		<div class="form-group">
+			<label>Call - Up No.: </label>
+			<input type="text" #callupNo="ngModel" required minlength="4" class="form-control" name="callupNo" placeholder="Username" ngModel>
+			<div *ngIf="callupNo.errors && (callupNo.dirty || callupNo.touched)" class="alert alert-danger">
+				<div [hidden]="!callupNo.errors.required">
+					Please enter your email address.
+				</div>
+
+				<div [hidden]="!callupNo.errors.minlength">
+					You name must be atleast four characters.
+				</div>
+			</div> 
 		</div>
 
 		<div class="form-group">
 			<label>Username: </label>
-			<input type="text" class="form-control">
+			<input type="text" #usernameRef="ngModel" required minlength="4" class="form-control" name="username" placeholder="Username" ngModel>
+			<div *ngIf="usernameRef.errors && (usernameRef.dirty || usernameRef.touched)" class="alert alert-danger">
+				<div [hidden]="!usernameRef.errors.required">
+					Please enter your email address.
+				</div>
+
+				<div [hidden]="!usernameRef.errors.minlength">
+					You name must be atleast four characters.
+				</div>
+			</div> 
 		</div>
 
 		<div class="form-group">
 			<label>Gender: </label>
-			<select  class="form-control">
+			<select #genderRef="ngModel" required  name="gender" class="form-control" ngModel>
+				<option value=""></option>
 				<option value="M">Male</option>
 				<option value="F">Female</option>
 			</select>
+			<div *ngIf="genderRef.errors && (genderRef.dirty || genderRef.touched)" class="alert alert-danger">
+				<div [hidden]="!genderRef.errors.required">
+					Please choose your gender.
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">
 			<label>State: </label>
-			<select class="form-control" >
+			<select #stateRef="ngModel" name="state" required class="form-control" ngModel>
 				<option *ngFor="let state of states" value="{{state.state_id}}">{{state.name}}</option>
 			</select>
+			<div *ngIf="stateRef.errors && (stateRef.dirty || stateRef.touched)" class="alert alert-danger">
+				<div [hidden]="!stateRef.errors.required">
+					Please choose your serving state.
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">
 			<label>Phone No.: </label>
-			<input type="text" class="form-control">
+			<input type="text" #phoneNoRef="ngModel" required minlength="7" placeholder="Phone Number" name="phoneNo"  class="form-control" ngModel>
+			<div *ngIf="phoneNoRef.errors && (phoneNoRef.dirty || phoneNoRef.touched)" class="alert alert-danger">
+				<div [hidden]="!phoneNoRef.errors.required">
+					Please provide us with your phone number.
+				</div>
+				<div [hidden]="!phoneNoRef.errors.minlength">
+					Your phone number must be at least 7 digits.
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">
 			<label>Password: </label>
-			<input type="text" class="form-control">
+			<input type="password" #pwdRef="ngModel" required minlength="5" placeholder="Password" name="password" class="form-control" ngModel>
+			<div *ngIf="pwdRef.errors && (pwdRef.dirty || pwdRef.touched)" class="danger danger-alert">
+				<div [hidden]="!pwdRef.errors.required">
+					Please provide us your password.
+				</div>
+				<div [hidden]="!pwdRef.errors.minlength">
+					Your password must be at least 5 characters.
+				</div>
+			</div>
 		</div>
 
+		<!--
 		<div class="form-group">
 			<label>Confirm-Password: </label>
-			<input type="text" class="form-control">
+			<input type="text" #confPwd="ngModel" required minlength="5" placeholder="Confirm Password" name="confirm_pwd" class="form-control" ngModel>
+			<div *ngIf="confPwd.errors && (confPwd.dirty || confPwd.touched)" class="danger danger-alert">
+				<div [hidden]="!confPwd.errors.required">
+					Please confirm your password.
+				</div>
+				<div [hidden]="!confPwd.errors.minlength">
+					Your password must be at least 5 characters.
+				</div>
+			</div>
 		</div>
-
-		<button class="btn btn-primary">Create New User</button>
+		-->
+		<button [disabled]="!registerForm.form.valid" class="btn btn-primary" type="submit">Create New User</button>
 	</form>
 </div>
