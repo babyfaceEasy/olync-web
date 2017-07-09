@@ -30,7 +30,7 @@
 
 		<div class="form-group">
 			<label>Call - Up No.: </label>
-			<input type="text" #callupNo="ngModel" required minlength="4" class="form-control" name="callupNo" placeholder="Username" ngModel>
+			<input type="text" #callupNo="ngModel" required minlength="4" class="form-control" name="callupNo" placeholder="Call Up Number" ngModel>
 			<div *ngIf="callupNo.errors && (callupNo.dirty || callupNo.touched)" class="alert alert-danger">
 				<div [hidden]="!callupNo.errors.required">
 					Please enter your email address.
@@ -72,6 +72,7 @@
 
 		<div class="form-group">
 			<label>State: </label>
+			<div *ngIf="!states">Loading...</div>
 			<select #stateRef="ngModel" name="state" required class="form-control" ngModel>
 				<option *ngFor="let state of states" value="{{state.state_id}}">{{state.name}}</option>
 			</select>
@@ -122,6 +123,7 @@
 			</div>
 		</div>
 		-->
-		<button [disabled]="!registerForm.form.valid" class="btn btn-primary" type="submit">Create New User</button>
+		<!-- [disabled]="!registerForm.form.valid" -->
+		<button  class="btn btn-primary" type="submit">Create New User</button>
 	</form>
 </div>
